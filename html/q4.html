@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <img src="./example.com" alt="done" srcset="">
+    <button type="button" class="btn">Hide</button>
+
+    <script>
+        var img = document.querySelector("img");
+        var btn = document.querySelector("button");
+
+        function onload(){
+            var temp = sessionStorage.getItem('visible');
+            if(temp=="block"){
+                img.style.display = temp;
+            }
+            else if(temp =="none"){
+                img.style.display = temp;
+                btn.textContent = "show";
+            }
+            else {
+                img.style.display = "block";
+            }
+        }
+        onload();
+        btn.addEventListener('click',()=>{
+            if(img.style.display=="none"){
+                img.style.display="block";
+                btn.textContent = "hide";
+            }
+            else{
+                img.style.display="none";
+                btn.textContent = "show";
+            }
+            sessionStorage.setItem('visible',img.style.display);
+        })
+    </script>
+</body>
+</html>
